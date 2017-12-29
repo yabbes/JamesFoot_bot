@@ -44,7 +44,7 @@ def show_leagues(bot, update):
         "🇫🇷 France 1 (Ligue 1) /fut fr \n"
         "🇩🇪 Germany 1 (Bundesliga) /fut de \n"
         "🇩🇪 Germany 2 (2. Bundesliga) /fut de2 \n"
-        "🇮🇹 Italy 1 (La Liga) /fut it \n"
+        "🇮🇹 Italy 1 (Serie A) /fut it \n"
         "🇳🇱 Netherlands 1 (Eredivisie) /fut nl \n"
         "🇵🇹 Portugal 1 (Primeira Liga) /fut pt \n"
         "🇧🇷 Brazil 1 (Campeonato Brasileiro) /fut br \n")
