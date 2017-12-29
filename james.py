@@ -14,7 +14,9 @@ de2= 'http://api.football-data.org/v1/competitions/453/leagueTable'
 it = 'http://api.football-data.org/v1/soccerseasons/456/leagueTable'
 es = 'http://api.football-data.org/v1/soccerseasons/455/leagueTable'
 fr = 'http://api.football-data.org/v1/soccerseasons/450/leagueTable'
-sources_available = ["en", "de", "de2", "it", "es", "fr"]
+nl = 'http://api.football-data.org/v1/soccerseasons/449/leagueTable'
+pt = 'http://api.football-data.org/v1/soccerseasons/457/leagueTable'
+sources_available = ["en", "de", "de2", "it", "es", "fr", "nl", "pt"]
 
 # Enable logging
 """LOG_FILENAME = 'example.log'
@@ -39,7 +41,9 @@ def show_leagues(bot, update):
         "🇫🇷 France 1 (Ligue 1) /fut fr \n"
         "🇩🇪 Germany 1 (Bundesliga) /fut de \n"
         "🇩🇪 Germany 2 (2. Bundesliga) /fut de2 \n"
-        "🇮🇹 Italy 1 (La Liga) /fut it \n")
+        "🇮🇹 Italy 1 (La Liga) /fut it \n"
+        "🇳🇱 Netherlands 1 (Eredivisie) /fut nl \n"
+        "🇵🇹 Portugal 1 (Primeira Liga) /fut pt \n")
 
 
 def alarm(bot, job):
@@ -87,6 +91,12 @@ def prepareTable(eingabe, update):
     elif eingabe == 'fr':
         select = fr
         greeting = "🇫🇷 Bonjour !\n"
+    elif eingabe == 'pt':
+        select = pt
+        greeting = "🇵🇹 Olà!\n"
+    elif eingabe == 'nl':
+        select = nl
+        greeting = "🇳🇱 Hoi!\n"
 
     table = urllib.request.urlopen(select)
     table_str = table.read().decode('utf-8')
