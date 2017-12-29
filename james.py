@@ -33,9 +33,9 @@ logger = logging.getLogger(__name__)
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(bot, update):
-    update.message.reply_text('🤖 ⚽ Hello there!\n"
+    update.message.reply_text("🤖 ⚽ Hello there!\n"
         "I am Sir James Foot and I provide you with the latest football tables\n"
-        "Use /<league shortcut> to access the table directly\n'
+        "Use /<league shortcut> to access the table directly\n"
         "For a list of currently available leagues type /leagues 🕵️‍\n"
         "🤖 ⚽ Enjoy my service!")
 
