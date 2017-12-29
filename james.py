@@ -33,26 +33,53 @@ logger = logging.getLogger(__name__)
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(bot, update):
-    update.message.reply_text('🤖 ⚽ Hello there!\n\n Use /fut <league shortcut>\n'
+    update.message.reply_text('🤖 ⚽ Hello there!\n\n Use /<league shortcut>\n'
         "For a list of currently available leagues type /leagues 🕵️‍")
 
 def show_leagues(bot, update):
     update.message.reply_text("🤖 ⚽ I currently offer service for \n\n"
-        "🇪🇸 Spain 1 (La Liga) /fut es \n"
-        "🇬🇧󠁧󠁢󠁥󠁮󠁧󠁿 England 1 (Premier League) /fut en \n"
-        "🇬🇧󠁧󠁢󠁥󠁮󠁧󠁿 England 2 (Championship) /fut en2 \n"
-        "🇫🇷 France 1 (Ligue 1) /fut fr \n"
-        "🇩🇪 Germany 1 (Bundesliga) /fut de \n"
-        "🇩🇪 Germany 2 (2. Bundesliga) /fut de2 \n"
-        "🇮🇹 Italy 1 (Serie A) /fut it \n"
-        "🇳🇱 Netherlands 1 (Eredivisie) /fut nl \n"
-        "🇵🇹 Portugal 1 (Primeira Liga) /fut pt \n"
-        "🇧🇷 Brazil 1 (Campeonato Brasileiro) /fut br \n")
+        "🇪🇸 Spain 1 (La Liga) /es \n"
+        "🇬🇧󠁧󠁢󠁥󠁮󠁧󠁿 England 1 (Premier League) /en \n"
+        "🇬🇧󠁧󠁢󠁥󠁮󠁧󠁿 England 2 (Championship) /en2 \n"
+        "🇫🇷 France 1 (Ligue 1) /fr \n"
+        "🇩🇪 Germany 1 (Bundesliga) /de \n"
+        "🇩🇪 Germany 2 (2. Bundesliga) /de2 \n"
+        "🇮🇹 Italy 1 (Serie A) /it \n"
+        "🇳🇱 Netherlands 1 (Eredivisie) /nl \n"
+        "🇵🇹 Portugal 1 (Primeira Liga) /pt \n"
+        "🇧🇷 Brazil 1 (Campeonato Brasileiro) /br \n")
 
 
 def nl_shortcut(bot, update):
     """shortcut for the Eredivisie table"""
     prepareTable("nl", update)
+def en_shortcut(bot, update):
+    """shortcut for the Premier League table"""
+    prepareTable("en", update)
+def en2_shortcut(bot, update):
+    """shortcut for the Championship table"""
+    prepareTable("en2", update)
+def es_shortcut(bot, update):
+    """shortcut for the La Liga table"""
+    prepareTable("es", update)
+def fr_shortcut(bot, update):
+    """shortcut for Ligue 1 table"""
+    prepareTable("fr", update)
+def de_shortcut(bot, update):
+    """shortcut for the Bundesliga table"""
+    prepareTable("de", update)
+def de2_shortcut(bot, update):
+    """shortcut for the Bundesliga 2 table"""
+    prepareTable("de2", update)
+def it_shortcut(bot, update):
+    """shortcut for the Serie A Table"""
+    prepareTable("it", update)
+def pt_shortcut(bot, update):
+    """shortcut for the Primeira Liga table"""
+    prepareTable("pt", update)
+def br_shortcut(bot, update):
+    """shortcut for the Campeonato Brasileiro table"""
+    prepareTable("br", update)
     
 
 def echo(bot, update):
@@ -61,7 +88,9 @@ def echo(bot, update):
         "Hello, I am Sir James Foot\n"
         "I can provide you with the current European football tables\n"
         "type /start to get started\n"
-        "Or directly get the football table by using /fut <league shortcut>")
+        "You can either access the football table by using /fut <league shortcut>\n"
+        "Or by using the new notation /en /de /fr /es (...)\n"
+        "For a list of available leagues type /leagues\n")
 
 def load_table(bot, update, args, job_queue, chat_data):
     """load table x"""
@@ -139,12 +168,23 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", start))
-    dp.add_handler(CommandHandler("nl", nl_shortcut))
+    
     dp.add_handler(CommandHandler("leagues", show_leagues))
     dp.add_handler(CommandHandler("fut", load_table,
                                   pass_args=True,
                                   pass_job_queue=True,
                                   pass_chat_data=True))
+
+    dp.add_handler(CommandHandler("nl", nl_shortcut))
+    dp.add_handler(CommandHandler("en", en_shortcut))
+    dp.add_handler(CommandHandler("en2", en2_shortcut))
+    dp.add_handler(CommandHandler("de", de_shortcut))
+    dp.add_handler(CommandHandler("de2", de2_shortcut))
+    dp.add_handler(CommandHandler("fr", fr_shortcut))
+    dp.add_handler(CommandHandler("es", es_shortcut))
+    dp.add_handler(CommandHandler("pt", pt_shortcut))
+    dp.add_handler(CommandHandler("br", br_shortcut))
+    
     
 
     dp.add_handler(MessageHandler(Filters.text, echo))
