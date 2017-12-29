@@ -33,8 +33,11 @@ logger = logging.getLogger(__name__)
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(bot, update):
-    update.message.reply_text('🤖 ⚽ Hello there!\n\n Use /<league shortcut>\n'
-        "For a list of currently available leagues type /leagues 🕵️‍")
+    update.message.reply_text('🤖 ⚽ Hello there!\n"
+        "I am Sir James Foot and I provide you with the latest football tables\n"
+        "Use /<league shortcut> to access the table directly\n'
+        "For a list of currently available leagues type /leagues 🕵️‍\n"
+        "🤖 ⚽ Enjoy my service!")
 
 def show_leagues(bot, update):
     update.message.reply_text("🤖 ⚽ I currently offer service for \n\n"
@@ -88,8 +91,7 @@ def echo(bot, update):
         "Hello, I am Sir James Foot\n"
         "I can provide you with the current European football tables\n"
         "type /start to get started\n"
-        "You can either access the football table by using /fut <league shortcut>\n"
-        "Or by using the new notation /en /de /fr /es (...)\n"
+        "You can access the football table by using /<league shortcut>\n"
         "For a list of available leagues type /leagues\n")
 
 def load_table(bot, update, args, job_queue, chat_data):
@@ -182,6 +184,7 @@ def main():
     dp.add_handler(CommandHandler("de2", de2_shortcut))
     dp.add_handler(CommandHandler("fr", fr_shortcut))
     dp.add_handler(CommandHandler("es", es_shortcut))
+    dp.add_handler(CommandHandler("it", it_shortcut))
     dp.add_handler(CommandHandler("pt", pt_shortcut))
     dp.add_handler(CommandHandler("br", br_shortcut))
     
