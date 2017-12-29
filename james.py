@@ -50,9 +50,10 @@ def show_leagues(bot, update):
         "🇧🇷 Brazil 1 (Campeonato Brasileiro) /fut br \n")
 
 
-def alarm(bot, job):
-    """Send the alarm message."""
-    bot.send_message(job.context, text='Beep!')
+def nl_shortcut(bot, update):
+    """shortcut for the Eredivisie table"""
+    prepareTable("nl", update)
+    
 
 def echo(bot, update):
     """Respond to user message."""
@@ -138,6 +139,7 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", start))
+    dp.add_handler(CommandHandler("nl", nl_shortcut))
     dp.add_handler(CommandHandler("leagues", show_leagues))
     dp.add_handler(CommandHandler("fut", load_table,
                                   pass_args=True,
