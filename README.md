@@ -8,5 +8,6 @@ pip install python-telegram-bot --upgrade
 ```
 Plus eventually urllib.request requirements...
 
+<img src="james.png">
 
 
