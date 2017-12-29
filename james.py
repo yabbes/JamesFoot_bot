@@ -9,15 +9,16 @@ import urllib.request
 
 # load json object of current league table from url
 en = 'http://api.football-data.org/v1/soccerseasons/445/leagueTable'
-en2 = 'http://api.football-data.org/v1/soccerseasons/447/leagueTable'
+en2 = 'http://api.football-data.org/v1/soccerseasons/446/leagueTable'
 de = 'http://api.football-data.org/v1/competitions/452/leagueTable'
 de2= 'http://api.football-data.org/v1/competitions/453/leagueTable'
 it = 'http://api.football-data.org/v1/soccerseasons/456/leagueTable'
 es = 'http://api.football-data.org/v1/soccerseasons/455/leagueTable'
 fr = 'http://api.football-data.org/v1/soccerseasons/450/leagueTable'
+br = 'http://api.football-data.org/v1/soccerseasons/444/leagueTable'
 nl = 'http://api.football-data.org/v1/soccerseasons/449/leagueTable'
 pt = 'http://api.football-data.org/v1/soccerseasons/457/leagueTable'
-sources_available = ["en", "en2", "de", "de2", "it", "es", "fr", "nl", "pt"]
+sources_available = ["en", "en2", "de", "de2", "it", "es", "fr", "nl", "pt", "br"]
 
 # Enable logging
 """LOG_FILENAME = 'example.log'
@@ -39,13 +40,14 @@ def show_leagues(bot, update):
     update.message.reply_text("🤖 ⚽ I currently offer service for \n\n"
         "🇪🇸 Spain 1 (La Liga) /fut es \n"
         "🇬🇧󠁧󠁢󠁥󠁮󠁧󠁿 England 1 (Premier League) /fut en \n"
-        "🇬🇧󠁧󠁢󠁥󠁮󠁧󠁿 England 2 (League One) /fut en2 \n"
+        "🇬🇧󠁧󠁢󠁥󠁮󠁧󠁿 England 2 (Championship) /fut en2 \n"
         "🇫🇷 France 1 (Ligue 1) /fut fr \n"
         "🇩🇪 Germany 1 (Bundesliga) /fut de \n"
         "🇩🇪 Germany 2 (2. Bundesliga) /fut de2 \n"
         "🇮🇹 Italy 1 (La Liga) /fut it \n"
         "🇳🇱 Netherlands 1 (Eredivisie) /fut nl \n"
-        "🇵🇹 Portugal 1 (Primeira Liga) /fut pt \n")
+        "🇵🇹 Portugal 1 (Primeira Liga) /fut pt \n"
+        "🇧🇷 Brazil 1 (Campeonato Brasileiro) /fut br \n")
 
 
 def alarm(bot, job):
@@ -99,6 +101,9 @@ def prepareTable(eingabe, update):
     elif eingabe == 'pt':
         select = pt
         greeting = "🇵🇹 Olà!\n"
+    elif eingabe == 'br':
+        select = br
+        greeting = "🇧🇷 Oi!\n"
     elif eingabe == 'nl':
         select = nl
         greeting = "🇳🇱 Hoi!\n"
